@@ -60,18 +60,4 @@ public class StreamUtil {
             MutableMaxTwo::combine
         );
     }
-
-    public interface ThrowingFunction<T, R> {
-        R apply(T t) throws Throwable;
-    }
-
-    public static @NotNull <T, R> Function<T, R> runtimifying(@NotNull ThrowingFunction<T, R> mapper) {
-        return t -> {
-            try {
-                return mapper.apply(t);
-            } catch (Throwable throwable) {
-                throw new RuntimeException(throwable);
-            }
-        };
-    }
 }
