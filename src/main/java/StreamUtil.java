@@ -26,13 +26,11 @@ public class StreamUtil {
         }
 
         void insert(R value) {
-            if (value.compareTo(secondMax) <= 0)
-                return;
-            if (value.compareTo(max) <= 0) {
-                secondMax = value;
-            } else {
+            if (max == null || value.compareTo(max) > 0) {
                 secondMax = max;
                 max = value;
+            } else if (secondMax == null || value.compareTo(secondMax) > 0) {
+                secondMax = value;
             }
         }
 
